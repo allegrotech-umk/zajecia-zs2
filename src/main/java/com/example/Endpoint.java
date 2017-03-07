@@ -1,6 +1,7 @@
 package com.example;
 
 import com.google.common.collect.Lists;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,12 @@ import java.util.List;
 @RestController
 public class Endpoint {
 
-    List<Card> cards = Lists.newArrayList(new Card("Szkoła", Arrays.asList("Uczelnia", "Nauczyciel", "Gimnazjum", "Podstawówka", "Uczeń")));
+    List<Card> cards = Lists.newArrayList(new Card("Szkoła",
+                                                   Arrays.asList("Uczelnia",
+                                                                 "Nauczyciel",
+                                                                 "Gimnazjum",
+                                                                 "Podstawówka",
+                                                                 "Uczeń")));
 
     @GetMapping("/get-card")
     public Card getCard() {
