@@ -3,21 +3,19 @@ package com.example;
 import com.google.common.collect.Lists;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class Endpoint {
 
     @GetMapping("/get-card")
     public Card getCard() {
-        return cards.get(0);
+        Random rand = new Random();
+        return cards.get(rand.nextInt(cards.size()));
     }
 
     @GetMapping("/get-cards")
@@ -29,6 +27,16 @@ public class Endpoint {
     @ResponseStatus(HttpStatus.OK)
     public void addCard(@RequestBody Card newCard) {
         cards.add(newCard);
+    }
+
+    @GetMapping("/find-card")
+    public Card findCard(@RequestParam String word) {
+        for(Card card : cards) {
+            if (card.word.equals(word)) {
+                return card;
+            }
+        }
+        throw new RuntimeException("Nie znaleziono karty!!");
     }
 
     private List<Card> cards = Lists.newArrayList(
