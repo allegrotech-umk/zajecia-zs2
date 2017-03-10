@@ -15,13 +15,6 @@ import java.util.List;
 @RestController
 public class Endpoint {
 
-    List<Card> cards = Lists.newArrayList(new Card("Szkoła",
-                                                   Arrays.asList("Uczelnia",
-                                                                 "Nauczyciel",
-                                                                 "Gimnazjum",
-                                                                 "Podstawówka",
-                                                                 "Uczeń")));
-
     @GetMapping("/get-card")
     public Card getCard() {
         return cards.get(0);
@@ -37,4 +30,26 @@ public class Endpoint {
     public void addCard(@RequestBody Card newCard) {
         cards.add(newCard);
     }
+
+    private List<Card> cards = Lists.newArrayList(
+            new Card("Szkoła",
+                    Arrays.asList("Uczelnia",
+                            "Nauczyciel",
+                            "Gimnazjum",
+                            "Podstawówka",
+                            "Uczeń")),
+            new Card("Chińskie Jedzenie",
+                    Arrays.asList("Ostre",
+                            "Gorące",
+                            "Smaczne",
+                            "Chiny",
+                            "Posiłek")),
+            new Card("Ciepło",
+                    Arrays.asList("Przyjaciele",
+                            "Globalne",
+                            "Podgrzewać",
+                            "Rodzice",
+                            "Słońce"))
+    );
+
 }
