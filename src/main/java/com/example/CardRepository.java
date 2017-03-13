@@ -11,4 +11,6 @@ public interface CardRepository {
     void save(Card card);
 
     Card findByName(String name);
+
+    void remove(Card name);
 }

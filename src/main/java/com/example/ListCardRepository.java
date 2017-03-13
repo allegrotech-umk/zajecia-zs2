@@ -57,4 +57,9 @@ public class ListCardRepository implements CardRepository {
         }
         throw new RuntimeException("Nie znaleziono karty!!");
     }
+
+    @Override
+    public void remove(final Card card) {
+        cards.remove(card);
+    }
 }

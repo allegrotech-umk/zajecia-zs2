@@ -1,6 +1,7 @@
 package com.example;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,5 +39,11 @@ public class Endpoint {
     @GetMapping("/find-card")
     public Card findCard(@RequestParam String word) {
         return cardService.findByName(word);
+    }
+
+    @DeleteMapping("/remove-card")
+    @ResponseStatus(HttpStatus.OK)
+    public void removeCard(@RequestBody Card card) {
+        cardService.remove(card);
     }
 }

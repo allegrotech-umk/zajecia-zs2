@@ -56,4 +56,11 @@ public class CardService {
 
         return cardRepository.findByName(name);
     }
+
+    public void remove(Card card) {
+
+        logger.info("usuwam karte o nazwie {}", card.getWord());
+
+        cardRepository.remove(card);
+    }
 }
