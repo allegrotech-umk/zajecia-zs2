@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 @RunWith(JUnit4.class)
 public class CardServiceTest {
 
-    private ListCardRepository listCardRepository;
+    private CardRepository listCardRepository;
 
     private CardService cardService;
 
