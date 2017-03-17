@@ -12,10 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(JUnit4.class)
@@ -41,22 +38,6 @@ public class CardServiceTest {
 
         // then
         assertThat(cards).isEqualTo(Collections.emptyList());
-        verify(listCardRepository, times(1)).findAll();
-    }
-
-    @Test
-    public void testFindAllWhenListOfCardsHasOneElement() throws Exception {
-        // given
-        final Card card = new Card("foo", Collections.singletonList("bar"));
-        given(listCardRepository.findAll()).willReturn(Collections.singletonList(card));
-
-        // when
-        final List<Card> cards = cardService.findAll();
-
-        // then
-        assertThat(cards.size()).isEqualTo(1);
-        assertThat(cards.get(0)).isEqualTo(card);
-        verify(listCardRepository, times(1)).findAll();
     }
 
     @Test
@@ -72,33 +53,6 @@ public class CardServiceTest {
         // then
         assertThat(cards.size()).isEqualTo(2);
         assertThat(cards.get(0)).isEqualTo(secondCard);
-        verify(listCardRepository, times(1)).findAll();
-    }
-
-    @Test
-    public void testSave() throws Exception {
-        // given
-        final Card card = new Card("foo", Collections.singletonList("bar"));
-
-        // when
-        cardService.save(card);
-
-        // then
-        verify(listCardRepository, times(1)).save(eq(card));
-    }
-
-    @Test
-    public void testFindOne() throws Exception {
-        // given
-        final Card card = new Card("foo", Collections.singletonList("bar"));
-        given(listCardRepository.findOne()).willReturn(card);
-
-        // when
-        final Card foundCard = cardService.findOne();
-
-        // then
-        assertThat(foundCard).isEqualTo(card);
-        verify(listCardRepository, times(1)).findOne();
     }
 
     @Test
@@ -112,7 +66,6 @@ public class CardServiceTest {
 
         // then
         assertThat(foundCard).isEqualTo(card);
-        verify(listCardRepository, times(1)).findByName(eq("foo"));
     }
 
     @Test
@@ -125,17 +78,5 @@ public class CardServiceTest {
         assertThatThrownBy(() -> cardService.findByName("foo"))
                 .isInstanceOf(RuntimeException.class)
                 .withFailMessage("Nie znaleziono karty!!");
-    }
-
-    @Test
-    public void testRemove() throws Exception {
-        // given
-        final Card card = new Card("foo", Collections.singletonList("bar"));
-
-        // when
-        cardService.remove(card);
-
-        // then
-        verify(listCardRepository, times(1)).remove(eq(card));
     }
 }

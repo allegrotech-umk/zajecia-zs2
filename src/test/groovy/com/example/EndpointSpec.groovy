@@ -39,7 +39,7 @@ class EndpointSpec extends IntegrationSpec {
     }
 
     @Unroll
-    def "should return card with #name"(name, statusCode, cardWord, cardForbiddenWord) {
+    def "should return card with #name"() {
         when:
         def response = restTemplate.getForEntity(localUrl("/find-card?word=${name}"), Card)
 
