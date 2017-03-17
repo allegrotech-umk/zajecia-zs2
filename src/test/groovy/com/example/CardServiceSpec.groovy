@@ -29,7 +29,6 @@ class CardServiceSpec extends Specification {
         def cards = cardService.findAll()
 
         then:
-        cards.size() == 2
         cards as List == [secondCard, firstCard] as List
     }
 

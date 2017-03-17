@@ -51,7 +51,6 @@ public class CardServiceTest {
         final List<Card> cards = cardService.findAll();
 
         // then
-        assertThat(cards.size()).isEqualTo(2);
         assertThat(cards).isEqualTo(Arrays.asList(secondCard, firstCard));
     }
 
