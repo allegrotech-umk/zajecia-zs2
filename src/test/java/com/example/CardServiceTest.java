@@ -52,7 +52,7 @@ public class CardServiceTest {
 
         // then
         assertThat(cards.size()).isEqualTo(2);
-        assertThat(cards.get(0)).isEqualTo(secondCard);
+        assertThat(cards).isEqualTo(Arrays.asList(secondCard, firstCard));
     }
 
     @Test

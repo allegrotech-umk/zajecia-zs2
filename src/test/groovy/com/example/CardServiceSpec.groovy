@@ -30,7 +30,7 @@ class CardServiceSpec extends Specification {
 
         then:
         cards.size() == 2
-        cards.get(0) == secondCard
+        cards as List == [secondCard, firstCard] as List
     }
 
     def "should return one card when find by name"() {
