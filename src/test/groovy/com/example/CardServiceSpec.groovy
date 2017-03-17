@@ -34,7 +34,7 @@ class CardServiceSpec extends Specification {
         def cards = cardService.findAll()
 
         then:
-        cards as List == [secondCard, firstCard] as List
+        cards == [secondCard, firstCard]
     }
 
     def "should return one card when find by name"() {
