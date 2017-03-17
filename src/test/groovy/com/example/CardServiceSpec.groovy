@@ -4,9 +4,14 @@ import spock.lang.Specification
 
 class CardServiceSpec extends Specification {
 
-    def cardRepository = Stub(ListCardRepository)
+    CardRepository cardRepository
 
-    def cardService = new CardService(cardRepository)
+    CardService cardService
+
+    def setup() {
+        cardRepository = Stub(ListCardRepository)
+        cardService = new CardService(cardRepository)
+    }
 
     def "should return empty list of cards"() {
         given:
