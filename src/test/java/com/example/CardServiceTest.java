@@ -43,8 +43,8 @@ public class CardServiceTest {
     @Test
     public void testFindAllWhenListOfCardsHasMoreElements() throws Exception {
         // given
-        final Card firstCard = new Card("foo", Collections.singletonList("baz"));
-        final Card secondCard = new Card("bar", Collections.singletonList("baz"));
+        final Card firstCard = new Card("foo", Arrays.asList("baz"));
+        final Card secondCard = new Card("bar", Arrays.asList("baz"));
         given(listCardRepository.findAll()).willReturn(Arrays.asList(firstCard, secondCard));
 
         // when
@@ -57,7 +57,7 @@ public class CardServiceTest {
     @Test
     public void testFindByNameWhenElementExists() throws Exception {
         // given
-        final Card card = new Card("foo", Collections.singletonList("bar"));
+        final Card card = new Card("foo", Arrays.asList("bar"));
         given(listCardRepository.findByName("foo")).willReturn(card);
 
         // when

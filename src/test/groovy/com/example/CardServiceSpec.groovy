@@ -26,8 +26,8 @@ class CardServiceSpec extends Specification {
 
     def "should return list with many elements"() {
         given:
-        def firstCard = new Card("foo", Collections.singletonList("baz"))
-        def secondCard = new Card("bar", Collections.singletonList("baz"))
+        def firstCard = new Card("foo", ["baz"])
+        def secondCard = new Card("bar", ["baz"])
         cardRepository.findAll() >> { [firstCard, secondCard] }
 
         when:
@@ -39,7 +39,7 @@ class CardServiceSpec extends Specification {
 
     def "should return one card when find by name"() {
         given:
-        def card = new Card("foo", Collections.singletonList("bar"))
+        def card = new Card("foo", ["bar"])
         cardRepository.findByName("foo") >> { card }
 
         when:
